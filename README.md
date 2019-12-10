@@ -21,7 +21,7 @@ And the final problem statement for the given are as:-
 [Download](http://codekata.com/kata/kata04-data-munging)
 
 ## Follow some rules:
-'''
+```
 1. SOLID Principle
 2. Code up the implementation for weather data.
 3. Code up the implementation for football data.
@@ -33,4 +33,4 @@ And the final problem statement for the given are as:-
 9. Refactor file to objects of array.
  
 
-'''
+```
