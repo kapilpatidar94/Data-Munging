@@ -1,29 +1,20 @@
-//In weather.dat you’ll find daily weather data for Morristown, NJ for June 2002. Download 
-// this text file, then write a program to output the day number (column one) with the smallest 
-// temperature spread (the maximum temperature is the second column, the minimum the third column).
+const { Main } = require('./main');
 
-const {fetchFile} = require('./main');
+class Weather extends Main {}
+const mainFun = new Weather();
 
-class Weather extends fetchFile{
-    static weatherDataSet = (data) => {
-        var readAble = data.toString().split('\n');
-        var twoDimension = readAble.map(rows => rows.trim().split(/\s+/));
-        let min = 9999, Day = "";
+const startIndex = 2
+const dayOfMonthColumn = 0
+const maxTempColumn = 1
+const minTempColumn = 2
 
-        for (let i = 1; i < twoDimension.length; i++) {
-            if (Math.abs(twoDimension[i][1] - twoDimension[i][2]) < min) {
-                min = Math.abs(twoDimension[i][1] - twoDimension[i][2]);
-                Day = twoDimension[i][0];
-            }
-        }
-        console.log('Day - ' + Day + '\nSmallest Difference - ' + min);
-    }
-}
 
-fetchFile
+
+mainFun
   .readFile('./weather.dat')
   .then(results => {
-    Weather.weatherDataSet(results);
+    const mydata = mainFun.fileRead(startIndex, results, dayOfMonthColumn, maxTempColumn, minTempColumn);
+    mainFun.diffData(mydata);
   })
   .catch(error => {
     console.log(error);
